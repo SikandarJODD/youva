@@ -50,7 +50,7 @@ I am using Dummy JSON API to fetch data. You can replace it with your own API. C
 ### Debounce Search
 
 - we will be using `throttle-debounce` library to implement the debounce search.
-- when users inputs the value after `400ms` we will set the query value as `q=michael` and fetch the data.
+- when users inputs the value after `300ms` we will set the query value as `q=michael` and fetch the data.
 - Checkout [Search Input Component](https://github.com/SikandarJODD/youva/blob/master/src/lib/components/dashboard/filter-view/SearchInput.svelte) for detail implementation.
 
 ### Sorting

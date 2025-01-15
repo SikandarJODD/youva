@@ -30,14 +30,17 @@
     let url = new URL(page.url);
     url.searchParams.delete("filter");
     url.searchParams.delete("value");
+    url.searchParams.delete("sortBy");
+    url.searchParams.delete("order");
+    url.searchParams.delete("skip");
     url.searchParams.set("q", inputValue);
     // keepFocus will keep the focus on the input element
     // Try removing it and see the difference
     goto(url.toString(), { replaceState: true, keepFocus: true });
   };
 
-  // when user inputs the value after 400ms the searchName function will be called
-  let debounceSearch = debounce(400, searchName);
+  // when user inputs the value after 300ms the searchName function will be called
+  let debounceSearch = debounce(300, searchName);
 </script>
 
 <div class="w-48">
