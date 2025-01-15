@@ -12,7 +12,7 @@
 
 <div>
   <div>
-    <h1 class="font-montserrat text-lg font-semibold">Youva Dashboard</h1>
+    <h1 class="font-montserrat text-lg font-semibold">Dashboard</h1>
     <p class="text-muted-foreground">
       pagination, sorting, filters, debounced search
     </p>

@@ -4,8 +4,8 @@
   import SearchInput from "./SearchInput.svelte";
 </script>
 
-<div class="mt-4 flex justify-between">
-  <div class="flex space-x-2 ">
+<div class="mt-4 flex justify-between flex-col md:flex-row space-y-2 md:space-y-0">
+  <div class="flex md:space-x-2 flex-col md:flex-row space-y-2 md:space-y-0">
     <SearchInput />
     <FilterCompanyTitle />
   </div>
