@@ -17,21 +17,19 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
   let sortOrder = url.searchParams.get('order') || 'asc';
   let sortBy = url.searchParams.get('sortBy') || '';
 
-  async function getUsers() {
-    let fetch_url = `https://dummyjson.com/users/search?q=${searchQ}&limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${sortOrder}`;
-    if (filter && filter_value) {
-      // consider filter value = Sales Manager
-      // convert it to Sales%20Manager
-      filter_value = filter_value.replace(' ', '%20');
-      fetch_url = `https://dummyjson.com/users/filter?key=${filter}&value=${filter_value}&limit=${limit}&skip=${skip}`;
-    }
+  // Fetch URL for Search & Sort
+  let fetch_url = `https://dummyjson.com/users/search?q=${searchQ}&limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${sortOrder}`;
 
-    let response = await fetch(fetch_url);
-    let data = await response.json();
-    return data;
+  if (filter && filter_value) {
+    // consider filter value = Sales Manager
+    // convert it to Sales%20Manager
+    filter_value = filter_value.replace(' ', '%20');
+    fetch_url = `https://dummyjson.com/users/filter?key=${filter}&value=${filter_value}&limit=${limit}&skip=${skip}`;
   }
 
+  let response = await fetch(fetch_url);
+
   return {
-    users: await getUsers() as UsersProfile
+    users: await response.json() as UsersProfile
   }
 };
