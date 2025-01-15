@@ -15,7 +15,7 @@
   import { toggleMode, mode } from "mode-watcher";
 </script>
 
-<nav class="bg-background border-b">
+<nav class="bg-background border-b sticky top-0 z-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="flex items-center">
