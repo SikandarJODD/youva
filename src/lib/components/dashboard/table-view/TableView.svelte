@@ -1,7 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { page } from "$app/state";
-  import Button from "$lib/components/ui/button/button.svelte";
   let {
     users,
   }: {
@@ -11,8 +10,12 @@
   import type { User } from "$lib/types/users";
   import ArrowUpAZ from "lucide-svelte/icons/arrow-down-a-z";
   import ArrowUpZA from "lucide-svelte/icons/arrow-down-z-a";
+  import ArrowAsc from "lucide-svelte/icons/arrow-down-0-1";
+  import ArrowDesc from "lucide-svelte/icons/arrow-down-1-0";
 
   let sortOrder = $state<"asc" | "desc">("asc");
+  let sortId = $state<"asc" | "desc">("asc");
+
   let sortFirstNames = () => {
     let url = new URL(page.url);
     let sortBy = page.url.searchParams.get("sortBy");
@@ -32,6 +35,26 @@
     }
     goto(url.toString(), { replaceState: true });
   };
+
+  let sortIDs = () => {
+    let url = new URL(page.url);
+    let sortBy = page.url.searchParams.get("sortBy");
+    let order = page.url.searchParams.get("order");
+
+    if (sortBy === "id") {
+      if (order === "asc") {
+        sortId = "desc";
+        url.searchParams.set("order", "desc");
+      } else {
+        sortId = "asc";
+        url.searchParams.set("order", "asc");
+      }
+    } else {
+      url.searchParams.set("sortBy", "id");
+      url.searchParams.set("order", "asc");
+    }
+    goto(url.toString(), { replaceState: true });
+  };
 </script>
 
 <div class="rounded-md border mt-4 overflow-hidden">
@@ -39,7 +62,19 @@
     <!-- <Table.Caption>A list of your recent invoices.</Table.Caption> -->
     <Table.Header class="bg-muted-foreground/10">
       <Table.Row>
-        <Table.Head class="w-[60px] ">Id</Table.Head>
+        <Table.Head>
+          <button
+            class="flex gap-1.5 items-center cursor-pointer"
+            onclick={sortIDs}
+          >
+            Id
+            {#if sortId === "asc"}
+              <ArrowAsc strokeWidth={1.4} size={16} />
+            {:else}
+              <ArrowDesc strokeWidth={1.4} size={16} />
+            {/if}
+          </button>
+        </Table.Head>
         <Table.Head
           onclick={sortFirstNames}
           class="items-center flex gap-1.5 cursor-pointer"

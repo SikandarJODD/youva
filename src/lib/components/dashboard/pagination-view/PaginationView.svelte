@@ -11,7 +11,7 @@
   let siblingCount = $derived(isDesktop.current ? 1 : 0);
   let currentMint = $state(0);
 
-  onMount(() => {
+  $effect(() => {
     currentMint = Number(page.url.searchParams.get("skip")) / 10 + 1;
   });
 

@@ -12,6 +12,9 @@
   function handleClearInput() {
     inputValue = "";
     inputElement.focus();
+    let url = new URL(page.url);
+    url.searchParams.delete("q");
+    goto(url.toString(), { replaceState: true });
   }
   let searchName = () => {
     console.log(inputValue);
@@ -22,13 +25,13 @@
   let debounceSearch = debounce(400, searchName);
 </script>
 
-<div class="w-56">
+<div class="w-48">
   <div class="relative">
     <Input
       bind:ref={inputElement}
       bind:value={inputValue}
       oninput={debounceSearch}
-      class="pe-9 ps-9"
+      class="pe-4 ps-9"
       placeholder="Search First Name"
       type="text"
     />
