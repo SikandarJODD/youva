@@ -41,12 +41,14 @@
     url.searchParams.set("limit", String(limit));
     goto(url);
   };
-  let crPage = $derived.by(() => {
+
+  // This is useful to calulate the current page
+  let currPage = $derived.by(() => {
     return Math.ceil(skip / limit) + 1;
   });
 </script>
 
-<Pagination.Root {count} {perPage} {siblingCount} page={crPage} class="mt-4">
+<Pagination.Root {count} {perPage} {siblingCount} page={currPage} class="mt-4">
   {#snippet children({ pages, currentPage })}
     <!-- {console.log(pages, currentPage, "updated", perPage, count)} -->
     <Pagination.Content>

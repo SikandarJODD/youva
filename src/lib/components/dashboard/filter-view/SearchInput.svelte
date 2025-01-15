@@ -9,12 +9,15 @@
 
   let inputValue = $state(page.url.searchParams.get("q") || "")!;
   let inputElement = $state<HTMLInputElement | null>(null)!;
+
+  // update the input value when the url has no query param q
   $effect(() => {
     if (!page.url.searchParams.has("q")) {
       inputValue = "";
     }
   });
 
+  // This will clear the input value and remove the query param q
   function handleClearInput() {
     inputValue = "";
     inputElement.focus();
@@ -22,13 +25,18 @@
     url.searchParams.delete("q");
     goto(url.toString(), { replaceState: true });
   }
+
   let searchName = () => {
     let url = new URL(page.url);
     url.searchParams.delete("filter");
     url.searchParams.delete("value");
     url.searchParams.set("q", inputValue);
+    // keepFocus will keep the focus on the input element
+    // Try removing it and see the difference
     goto(url.toString(), { replaceState: true, keepFocus: true });
   };
+
+  // when user inputs the value after 400ms the searchName function will be called
   let debounceSearch = debounce(400, searchName);
 </script>
 

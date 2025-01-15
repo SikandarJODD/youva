@@ -2,7 +2,6 @@
 import { error, type Actions } from "@sveltejs/kit";
 import { PUBLIC_API_URL } from "$env/static/public";
 import type { PageServerLoad } from "./$types";
-import { goto } from "$app/navigation";
 
 async function getUsers(limit: number = 10, skip: number = 0, search: string = "") {
   if (limit > 100) {

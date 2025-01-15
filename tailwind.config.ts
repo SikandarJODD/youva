@@ -67,8 +67,8 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)"
 			},
 			fontFamily: {
-				sans: ['InterVariable',...fontFamily.sans],
-				'montserrat': ['Montserrat','serif'],
+				sans: ['InterVariable', ...fontFamily.sans],
+				"baloo": ['"Baloo 2"', ...fontFamily.sans],
 			},
 			keyframes: {
 				"accordion-down": {

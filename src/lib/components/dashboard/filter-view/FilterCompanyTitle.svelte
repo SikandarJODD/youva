@@ -20,11 +20,14 @@
     let url = new URL(page.url);
     return url.searchParams.get("filter") === "company.title";
   });
+
   let filter_users = (value: string) => {
     let url = new URL(page.url);
+    // Deleteing Search and SortBy Params
     url.searchParams.delete("q");
     url.searchParams.delete("sortBy");
     url.searchParams.delete("order");
+
     url.searchParams.set("filter", "company.title");
     url.searchParams.set("value", value);
     // url.searchParams.set("limit", "10");

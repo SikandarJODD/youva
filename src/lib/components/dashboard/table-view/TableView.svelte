@@ -16,6 +16,7 @@
   let sortOrder = $state<"asc" | "desc">("asc");
   let sortId = $state<"asc" | "desc">("asc");
 
+  // Sort by first name
   let sortFirstNames = () => {
     let url = new URL(page.url);
     let sortBy = page.url.searchParams.get("sortBy");
@@ -36,6 +37,7 @@
     goto(url.toString(), { replaceState: true });
   };
 
+  // Sort by ID
   let sortIDs = () => {
     let url = new URL(page.url);
     let sortBy = page.url.searchParams.get("sortBy");
@@ -59,7 +61,6 @@
 
 <div class="rounded-md border mt-4 overflow-hidden">
   <Table.Root>
-    <!-- <Table.Caption>A list of your recent invoices.</Table.Caption> -->
     <Table.Header class="bg-muted-foreground/10">
       <Table.Row>
         <Table.Head>
@@ -88,7 +89,6 @@
         <Table.Head>Last Name</Table.Head>
         <Table.Head>Email</Table.Head>
         <Table.Head>Company Title</Table.Head>
-        <!-- <Table.Head class="text-right">Amount</Table.Head> -->
       </Table.Row>
     </Table.Header>
     <Table.Body>
@@ -99,15 +99,8 @@
           <Table.Cell>{user.lastName}</Table.Cell>
           <Table.Cell>{user.email}</Table.Cell>
           <Table.Cell>{user.company.title}</Table.Cell>
-          <!-- <Table.Cell class="text-right">{user.lastName}</Table.Cell> -->
         </Table.Row>
       {/each}
     </Table.Body>
-    <!-- <Table.Footer>
-      <Table.Row>
-        <Table.Cell colspan={3}>Total</Table.Cell>
-        <Table.Cell class="text-right">$2,500.00</Table.Cell>
-      </Table.Row>
-    </Table.Footer> -->
   </Table.Root>
 </div>
