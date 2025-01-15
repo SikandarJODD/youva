@@ -3,21 +3,21 @@
   import * as Pagination from "$lib/components/ui/pagination/index.js";
   import { page } from "$app/state";
   import { goto } from "$app/navigation";
-  import { onMount } from "svelte";
 
   const isDesktop = new MediaQuery("(min-width: 768px)");
   let { count = 100 } = $props();
-  let perPage = $derived(isDesktop.current ? 10 : 4);
-  let siblingCount = $derived(isDesktop.current ? 1 : 0);
-  let currentMint = $state(0);
 
-  $effect(() => {
-    currentMint = Number(page.url.searchParams.get("skip")) / 10 + 1;
+  let siblingCount = $derived(isDesktop.current ? 1 : 0);
+
+  let perPage = $derived.by(() => {
+    let lim = Number(page.url.searchParams.get("limit")) || 10;
+    return isDesktop.current ? lim : 4;
   });
 
   // Limit and Skip
   let limit = $derived(Number(page.url.searchParams.get("limit")) || 10);
   let skip = $derived(Number(page.url.searchParams.get("skip")) || 0);
+
   let nextPage = () => {
     let url = new URL(page.url);
     url.searchParams.set("skip", String(skip + limit));
@@ -38,19 +38,17 @@
       "skip",
       String(index - 1 === 0 ? 0 : (index - 1) * limit)
     );
-    url.searchParams.set("limit", "10");
+    url.searchParams.set("limit", String(limit));
     goto(url);
   };
+  let crPage = $derived.by(() => {
+    return Math.ceil(skip / limit) + 1;
+  });
 </script>
 
-<Pagination.Root
-  {count}
-  {perPage}
-  {siblingCount}
-  bind:page={currentMint}
-  class="mt-4"
->
+<Pagination.Root {count} {perPage} {siblingCount} page={crPage} class="mt-4">
   {#snippet children({ pages, currentPage })}
+    <!-- {console.log(pages, currentPage, "updated", perPage, count)} -->
     <Pagination.Content>
       <Pagination.Item>
         <Pagination.PrevButton onclick={prevPage} />

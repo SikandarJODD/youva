@@ -4,10 +4,16 @@
   import { Input } from "$lib/components/ui/input";
   import CircleX from "lucide-svelte/icons/circle-x";
   import Search from "lucide-svelte/icons/search";
+  import { onMount } from "svelte";
   import { debounce } from "throttle-debounce";
 
   let inputValue = $state(page.url.searchParams.get("q") || "")!;
   let inputElement = $state<HTMLInputElement | null>(null)!;
+  $effect(() => {
+    if (!page.url.searchParams.has("q")) {
+      inputValue = "";
+    }
+  });
 
   function handleClearInput() {
     inputValue = "";
@@ -17,8 +23,9 @@
     goto(url.toString(), { replaceState: true });
   }
   let searchName = () => {
-    console.log(inputValue);
     let url = new URL(page.url);
+    url.searchParams.delete("filter");
+    url.searchParams.delete("value");
     url.searchParams.set("q", inputValue);
     goto(url.toString(), { replaceState: true, keepFocus: true });
   };
