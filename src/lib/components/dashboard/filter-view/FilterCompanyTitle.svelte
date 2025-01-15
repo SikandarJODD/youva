@@ -27,7 +27,7 @@
     url.searchParams.delete("order");
     url.searchParams.set("filter", "company.title");
     url.searchParams.set("value", value);
-    url.searchParams.set("limit", "10");
+    // url.searchParams.set("limit", "10");
     url.searchParams.set("skip", "0");
     goto(url.toString(), { replaceState: true });
   };
