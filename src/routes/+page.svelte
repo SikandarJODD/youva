@@ -19,5 +19,5 @@
   </div>
   <SearchFilterView />
   <TableView users={data.users.users} />
-  <PaginationView />
+  <PaginationView count={data.users.total} />
 </div>

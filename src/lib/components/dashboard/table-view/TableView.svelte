@@ -13,7 +13,7 @@
     <!-- <Table.Caption>A list of your recent invoices.</Table.Caption> -->
     <Table.Header>
       <Table.Row>
-        <Table.Head class="w-[100px]">Id</Table.Head>
+        <Table.Head class="w-[60px] ">Id</Table.Head>
         <Table.Head>First Name</Table.Head>
         <Table.Head>Last Name</Table.Head>
         <Table.Head>Email</Table.Head>
@@ -24,7 +24,7 @@
     <Table.Body>
       {#each users as user, i (i)}
         <Table.Row>
-          <Table.Cell class="font-medium">{user.id}</Table.Cell>
+          <Table.Cell>{user.id}</Table.Cell>
           <Table.Cell>{user.firstName}</Table.Cell>
           <Table.Cell>{user.lastName}</Table.Cell>
           <Table.Cell>{user.email}</Table.Cell>

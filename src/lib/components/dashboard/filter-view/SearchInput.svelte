@@ -1,28 +1,36 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
   import { Input } from "$lib/components/ui/input";
-  import { Label } from "$lib/components/ui/label";
   import CircleX from "lucide-svelte/icons/circle-x";
-  import Search from 'lucide-svelte/icons/search';
+  import Search from "lucide-svelte/icons/search";
+  import { debounce } from "throttle-debounce";
 
-
-  let inputValue = $state("");
+  let inputValue = $state(page.url.searchParams.get("q") || "")!;
   let inputElement = $state<HTMLInputElement | null>(null)!;
 
   function handleClearInput() {
     inputValue = "";
     inputElement.focus();
   }
+  let searchName = () => {
+    console.log(inputValue);
+    let url = new URL(page.url);
+    url.searchParams.set("q", inputValue);
+    goto(url.toString(), { replaceState: true, keepFocus: true });
+  };
+  let debounceSearch = debounce(400, searchName);
 </script>
 
 <div class="w-56">
   <div class="relative">
     <Input
-      id="input-24"
       bind:ref={inputElement}
       bind:value={inputValue}
-      class="peer pe-9 ps-9"
+      oninput={debounceSearch}
+      class="pe-9 ps-9"
       placeholder="Search"
-      type='text'
+      type="text"
     />
     <div
       class="pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-muted-foreground/80 peer-disabled:opacity-50"
