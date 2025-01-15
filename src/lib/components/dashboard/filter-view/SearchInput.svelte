@@ -29,7 +29,7 @@
       bind:value={inputValue}
       oninput={debounceSearch}
       class="pe-9 ps-9"
-      placeholder="Search"
+      placeholder="Search First Name"
       type="text"
     />
     <div
