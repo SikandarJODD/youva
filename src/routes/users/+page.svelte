@@ -29,7 +29,7 @@
     url.searchParams.delete("limit");
     url.searchParams.set("skip", "0");
     url.searchParams.set("limit", pageSize.toString());
-    goto(url.toString());
+    goto(url.toString(), { keepFocus: true });
   };
 </script>
 
@@ -59,7 +59,6 @@
       name="search"
       bind:value={searchText}
       oninput={updateSeachQuery}
-      autofocus
     />
     <!-- </form> -->
   </div>
