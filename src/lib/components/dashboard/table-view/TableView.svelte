@@ -100,6 +100,12 @@
           <Table.Cell>{user.email}</Table.Cell>
           <Table.Cell>{user.company.title}</Table.Cell>
         </Table.Row>
+      {:else}
+        <Table.Row>
+          <Table.Cell colspan={5} class="text-center">
+            No users found
+          </Table.Cell>
+        </Table.Row>
       {/each}
     </Table.Body>
   </Table.Root>

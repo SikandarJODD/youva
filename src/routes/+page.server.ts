@@ -1,6 +1,7 @@
 // you can generate types for any api using thunder client
 import type { UsersProfile } from "$lib/types/users";
-import type { PageServerLoad } from "./$types";
+import { error } from "@sveltejs/kit";
+import type { PageServerLoad } from "./users/$types";
 
 export const load: PageServerLoad = async ({ url, fetch }) => {
 
@@ -17,18 +18,20 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
   let sortOrder = url.searchParams.get('order') || 'asc';
   let sortBy = url.searchParams.get('sortBy') || '';
 
-  // Fetch URL for Search & Sort
-  let fetch_url = `https://dummyjson.com/users/search?q=${searchQ}&limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${sortOrder}`;
+  // Fetch URL
+  let fetch_url = `https://dummyjson.com/users/search?q=${searchQ}&limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${sortOrder}&select=id,firstName,lastName,email,company`;
+
 
   if (filter && filter_value) {
     // consider filter value = Sales Manager
     // convert it to Sales%20Manager
     filter_value = filter_value.replace(' ', '%20');
-    fetch_url = `https://dummyjson.com/users/filter?key=${filter}&value=${filter_value}&limit=${limit}&skip=${skip}`;
+    fetch_url = `https://dummyjson.com/users/filter?key=${filter}&value=${filter_value}&limit=${limit}&skip=${skip}&select=id,firstName,lastName,email,company`;
   }
 
   let response = await fetch(fetch_url);
 
+  // Now below response is streamed to the client
   return {
     users: await response.json() as UsersProfile
   }
