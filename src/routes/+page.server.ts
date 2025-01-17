@@ -29,10 +29,11 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
     fetch_url = `https://dummyjson.com/users/filter?key=${filter}&value=${filter_value}&limit=${limit}&skip=${skip}&select=id,firstName,lastName,email,company`;
   }
 
-  let response = await fetch(fetch_url);
 
   // Now below response is streamed to the client
+  let response = fetch(fetch_url).then((res) => res.json());
+
   return {
-    users: await response.json() as UsersProfile
+    users: response
   }
 };
