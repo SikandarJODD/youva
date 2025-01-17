@@ -11,7 +11,7 @@
 
   let perPage = $derived.by(() => {
     let lim = Number(page.url.searchParams.get("limit")) || 10;
-    return isDesktop.current ? lim : 4;
+    return lim;
   });
 
   // Limit and Skip

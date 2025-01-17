@@ -8,7 +8,6 @@
   import { debounce } from "throttle-debounce";
 
   let inputValue = $state(page.url.searchParams.get("q") || "")!;
-  let inputElement = $state<HTMLInputElement | null>(null)!;
 
   // update the input value when the url has no query param q
   $effect(() => {
@@ -20,13 +19,17 @@
   // This will clear the input value and remove the query param q
   function handleClearInput() {
     inputValue = "";
-    inputElement.focus();
     let url = new URL(page.url);
     url.searchParams.delete("q");
-    goto(url.toString(), { replaceState: true });
+    goto(url.toString(), { replaceState: true, keepFocus: true });
   }
 
   let searchName = () => {
+    // if input is empty we will run handle clear input to remove query param and search for all users
+    if (inputValue === "") {
+      handleClearInput();
+      return;
+    }
     let url = new URL(page.url);
     url.searchParams.delete("filter");
     url.searchParams.delete("value");
@@ -46,7 +49,6 @@
 <div class="w-48">
   <div class="relative">
     <Input
-      bind:ref={inputElement}
       bind:value={inputValue}
       oninput={debounceSearch}
       class="pe-4 ps-9"
