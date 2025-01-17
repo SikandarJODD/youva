@@ -31,9 +31,9 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 
 
   // Now below response is streamed to the client
-  let response = fetch(fetch_url).then((res) => res.json());
+  let response = await fetch(fetch_url);
 
   return {
-    users: response
+    users: await response.json()
   }
 };

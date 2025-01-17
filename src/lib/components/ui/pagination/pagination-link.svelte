@@ -38,7 +38,7 @@
       size,
     }),
     className,
-    isActive && "border-pink-400/80 dark:border-pink-600/50"
+    isActive && "border-zinc-500 dark:border-zinc-600"
   )}
   {...restProps}
   children={children || Fallback}
