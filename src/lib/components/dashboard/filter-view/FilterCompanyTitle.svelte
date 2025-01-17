@@ -16,6 +16,7 @@
       value: "Business Analyst",
     },
   ];
+
   let is_filter_present = $derived.by(() => {
     let url = new URL(page.url);
     return url.searchParams.get("filter") === "company.title";
