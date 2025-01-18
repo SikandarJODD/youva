@@ -2,8 +2,9 @@
   import Button from "$lib/components/ui/button/button.svelte";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
   import ArrowDown from "lucide-svelte/icons/arrow-down";
+  import ChevronsUpDown from "lucide-svelte/icons/chevrons-up-down";
   import ArrowUp from "lucide-svelte/icons/arrow-up";
-  import ChevronsUpDown  from 'lucide-svelte/icons/chevrons-up-down';
+  import ListFilter from "lucide-svelte/icons/list-filter";
   import { page } from "$app/state";
   import { goto } from "$app/navigation";
   type Props = {
@@ -45,12 +46,12 @@
 
         {#if category === key}
           {#if orderBy === "asc"}
-            <ArrowUp strokeWidth={1.4}  />
+            <ArrowUp strokeWidth={1.4} />
           {:else if orderBy === "desc"}
-            <ArrowDown strokeWidth={1.4}  />
+            <ArrowDown strokeWidth={1.4} />
           {/if}
         {:else}
-          <ChevronsUpDown strokeWidth={1.4}  />
+          <ChevronsUpDown strokeWidth={1.4} />
         {/if}
       </Button>
     </DropdownMenu.Trigger>

@@ -6,6 +6,7 @@
   let navs = [
     { name: "Home", url: "/" },
     { name: "About", url: "/about" },
+    { name: "Drizz", url: "/drizz", isNew: true },
   ];
 
   // Mobile and user profile state
@@ -13,6 +14,7 @@
   let isUserProfile = $state(false);
   // Dark & Light Mode
   import { toggleMode, mode } from "mode-watcher";
+  import Badge from "../ui/badge/badge.svelte";
 </script>
 
 <nav class="bg-background border-b sticky top-0 z-50">
@@ -42,7 +44,15 @@
 							>Dashboard</a
 						> -->
             {#each navs as nav}
-              <Button href={nav.url} variant="ghost">{nav.name}</Button>
+              <Button href={nav.url} variant={nav.isNew ? "secondary" : "ghost"}
+                >{nav.name}
+                {#if nav.isNew}
+                  <Badge
+                    variant="outline"
+                    class="rounded-full text-xs border-primary/50">New</Badge
+                  >
+                {/if}
+              </Button>
             {/each}
           </div>
         </div>
@@ -180,7 +190,11 @@
       </svg></Button
     >
     <!-- Twitter  -->
-    <Button size="icon" variant="ghost" href="https://x.com/Sikandar_Bhide" target="_blank"
+    <Button
+      size="icon"
+      variant="ghost"
+      href="https://x.com/Sikandar_Bhide"
+      target="_blank"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="1200"

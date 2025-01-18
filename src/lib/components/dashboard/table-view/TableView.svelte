@@ -2,8 +2,6 @@
   import * as Table from "$lib/components/ui/table/index.js";
   import ListFilter from "lucide-svelte/icons/list-filter";
   import type { User } from "$lib/types/users";
-  import { goto } from "$app/navigation";
-  import { page } from "$app/state";
   import Button from "$lib/components/ui/button/button.svelte";
   import SortItem from "./SortItem.svelte";
   let {
@@ -12,13 +10,6 @@
     users: User[];
   } = $props();
 
-  // Sort by category ID, first name, last name, email, company title
-  let sortFilters = (category: string, order: string) => {
-    let url = new URL(page.url);
-    url.searchParams.set("sortBy", category);
-    url.searchParams.set("order", order);
-    goto(url.toString(), { replaceState: true });
-  };
 </script>
 
 <div class="rounded-md border mt-4 overflow-hidden">
