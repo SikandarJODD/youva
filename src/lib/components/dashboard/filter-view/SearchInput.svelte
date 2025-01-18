@@ -32,6 +32,7 @@
     }
     let url = new URL(page.url);
     url.searchParams.delete("filter");
+    url.searchParams.delete("status");
     url.searchParams.delete("value");
     url.searchParams.delete("sortBy");
     url.searchParams.delete("order");

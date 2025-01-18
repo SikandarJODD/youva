@@ -41,7 +41,7 @@
 		"dotenv": "^16.4.7",
 		"drizzle-orm": "^0.38.4",
 		"drizzle-seed": "^0.3.0",
-		"postgres": "^3.4.5",
+		"pg": "^8.13.1",
 		"throttle-debounce": "^5.0.2"
 	}
 }

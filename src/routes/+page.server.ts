@@ -1,7 +1,7 @@
 // you can generate types for any api using thunder client
 import type { UsersProfile } from "$lib/types/users";
 import { error } from "@sveltejs/kit";
-import type { PageServerLoad } from "./users/$types";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ url, fetch }) => {
 

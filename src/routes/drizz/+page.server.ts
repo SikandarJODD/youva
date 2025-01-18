@@ -1,7 +1,7 @@
 import { db } from "$lib/server/db";
 import { all_users } from "$lib/server/db/schema";
 import { asc, desc, eq, ilike, or } from "drizzle-orm";
-import type { PageServerLoad } from "../$types";
+import type { PageServerLoad } from "./$types";
 
 type Status = 'active' | 'inactive' | 'sage' | 'god';
 type SortBy = 'id' | 'firstName' | 'lastName' | 'email' | 'status';
