@@ -5,19 +5,19 @@
   let url_param = $state(page.url.pathname.split("/")[1]);
   let navs = [
     { name: "Home", url: "/" },
+    { name: "Drizz", url: "/drizz", isNew: true },
     { name: "About", url: "/about" },
   ];
 
   // Mobile and user profile state
   let isMobileMenu = $state(false);
-  let isUserProfile = $state(false);
   // Dark & Light Mode
   import { toggleMode, mode } from "mode-watcher";
 </script>
 
 <nav class="bg-background border-b sticky top-0 z-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
+    <div class="flex h-14 items-center justify-between">
       <div class="flex items-center">
         <a href="/" aria-label="home" class="shrink-0">
           <svg
@@ -42,7 +42,15 @@
 							>Dashboard</a
 						> -->
             {#each navs as nav}
-              <Button href={nav.url} variant="ghost">{nav.name}</Button>
+              <Button href={nav.url} variant={nav.isNew ? "secondary" : "ghost"}
+                >{nav.name}
+                {#if nav.isNew}
+                  <span
+                    class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"
+                    >New</span
+                  >
+                {/if}
+              </Button>
             {/each}
           </div>
         </div>
@@ -180,7 +188,11 @@
       </svg></Button
     >
     <!-- Twitter  -->
-    <Button size="icon" variant="ghost" href="https://x.com/Sikandar_Bhide" target="_blank"
+    <Button
+      size="icon"
+      variant="ghost"
+      href="https://x.com/Sikandar_Bhide"
+      target="_blank"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="1200"

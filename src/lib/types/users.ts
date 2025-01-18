@@ -11,7 +11,6 @@ export interface User {
   lastName:   string;
   email:      string;
   company:    Company;
-  role:       Role;
 }
 
 
@@ -22,8 +21,3 @@ export interface Company {
   title:      string;
 }
 
-export enum Role {
-  Admin = "admin",
-  Moderator = "moderator",
-  User = "user",
-}

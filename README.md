@@ -4,12 +4,18 @@ This Project includes a simple example of how to implement pagination, debounce 
 
 ![Main_Page](/static/img.svg)
 
+
 ## Features
 
 - Pagination
 - Debounce Search
 - Sorting
 - Filtering
+
+## Drizz
+checkout /drizz route for the implementation of Drizzle ORM for pagination.
+- Supabase Postgres Database
+- Drizzle ORM for Pagination
 
 ## Installation
 

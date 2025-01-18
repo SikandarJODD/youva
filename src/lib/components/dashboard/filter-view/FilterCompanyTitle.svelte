@@ -2,24 +2,27 @@
   import { goto } from "$app/navigation";
   import { page } from "$app/state";
   import Button from "$lib/components/ui/button/button.svelte";
-  let all_filters = [
-    {
-      name: "Sales Manager",
-      value: "Sales Manager",
-    },
-    {
-      name: "Web Developer",
-      value: "Web Developer",
-    },
-    {
-      name: "Business Analyst",
-      value: "Business Analyst",
-    },
-  ];
+  let {
+    all_filters = [
+      {
+        name: "Sales Manager",
+        value: "Sales Manager",
+      },
+      {
+        name: "Web Developer",
+        value: "Web Developer",
+      },
+      {
+        name: "Business Analyst",
+        value: "Business Analyst",
+      },
+    ],
+    key = "company.title",
+  } = $props();
 
   let is_filter_present = $derived.by(() => {
     let url = new URL(page.url);
-    return url.searchParams.get("filter") === "company.title";
+    return url.searchParams.get("filter") === key;
   });
 
   let filter_users = (value: string) => {
@@ -29,7 +32,7 @@
     url.searchParams.delete("sortBy");
     url.searchParams.delete("order");
 
-    url.searchParams.set("filter", "company.title");
+    url.searchParams.set("filter", key);
     url.searchParams.set("value", value);
     // url.searchParams.set("limit", "10");
     url.searchParams.set("skip", "0");

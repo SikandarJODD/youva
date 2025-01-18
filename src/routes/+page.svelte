@@ -11,13 +11,11 @@
 </script>
 
 <div>
-  <div>
-    <h1 class="text-xl font-semibold font-mono">Dashboard</h1>
-    <p class="text-muted-foreground">
-      pagination, sorting, filters, debounced search
-    </p>
-  </div>
-  <SearchFilterView />
-  <TableView users={data.users.users} />
-  <PaginationView count={data.users.total} />
+  <h1 class="text-xl font-semibold font-mono">Dashboard</h1>
+  <p class="text-muted-foreground">
+    pagination, sorting, filters, debounced search
+  </p>
 </div>
+<SearchFilterView />
+<TableView users={data.users.users} />
+<PaginationView count={data.users.total} />

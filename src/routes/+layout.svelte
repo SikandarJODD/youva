@@ -7,6 +7,6 @@
 
 <ModeWatcher defaultMode="dark" />
 <Navbar />
-<div class="px-2 lg:px-32 py-4">
+<div class="px-2 lg:px-32 py-3">
   {@render children()}
 </div>
