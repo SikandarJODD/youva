@@ -29,8 +29,13 @@
         <Table.Head
           ><DrizzSortItem name="Email" key="email"></DrizzSortItem></Table.Head
         >
-        <Table.Head class="hover:text-primary">Company Title</Table.Head>
-        <Table.Head class="hover:text-primary">Staus</Table.Head>
+        <Table.Head
+          ><DrizzSortItem name="Company" key="company"></DrizzSortItem></Table.Head
+        >
+        <Table.Head
+          ><DrizzSortItem name="Status" key="status"></DrizzSortItem></Table.Head
+        >
+
       </Table.Row>
     </Table.Header>
     <Table.Body>
