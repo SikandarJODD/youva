@@ -8,6 +8,7 @@
   let selected = $state("");
   let updatePageQuery = () => {
     let url = new URL(page.url);
+    url.searchParams.delete("q");
     if (selected) {
       url.searchParams.set("status", selected);
     } else {
