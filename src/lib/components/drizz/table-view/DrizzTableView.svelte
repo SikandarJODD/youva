@@ -43,40 +43,25 @@
           <Table.Cell>{user.company}</Table.Cell>
           <Table.Cell>
             {#if user.status === "active"}
-              <Badge
-                variant="outline"
-                class="gap-1.5 rounded-full dark:bg-emerald-800/20 "
+              <span
+                class="rounded-full inline-flex items-center bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"
+                >{user.status}</span
               >
-                <span
-                  class="size-1.5 rounded-full bg-emerald-500"
-                  aria-hidden="true"
-                ></span>
-
-                {user.status}
-              </Badge>
             {:else if user.status === "inactive"}
-              <Badge
-                variant="outline"
-                class="gap-1.5 rounded-full dark:bg-red-800/20"
+              <span
+                class="rounded-full inline-flex items-center bg-yellow-400/10 px-2 py-0.5 text-xs font-medium text-yellow-500 ring-1 ring-inset ring-yellow-400/20"
+                >{user.status}</span
               >
-                <span
-                  class="size-1.5 rounded-full bg-red-500"
-                  aria-hidden="true"
-                ></span>
-
-                {user.status}
-              </Badge>
+            {:else if user.status === "sage"}
+              <span
+                class="inline-flex items-center rounded-full bg-gray-400/10 px-2 py-0.5 text-xs font-medium text-gray-400 ring-1 ring-inset ring-gray-400/20"
+                >{user.status}</span
+              >
             {:else}
-              <Badge
-                variant="outline"
-                class="gap-1.5 rounded-full dark:bg-amber-900/20"
+              <span
+                class="inline-flex items-center rounded-full bg-pink-400/10 px-2 py-0.5 text-xs font-medium text-pink-400 ring-1 ring-inset ring-pink-400/20"
+                >{user.status}</span
               >
-                <span
-                  class="size-1.5 rounded-full bg-amber-500"
-                  aria-hidden="true"
-                ></span>
-                {user.status}
-              </Badge>
             {/if}
           </Table.Cell>
         </Table.Row>

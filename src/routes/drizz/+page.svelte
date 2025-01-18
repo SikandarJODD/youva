@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { page } from "$app/state";
+  import SearchFilterView from "$lib/components/dashboard/filter-view/SearchFilterView.svelte";
   import PaginationView from "$lib/components/dashboard/pagination-view/PaginationView.svelte";
   import DrizzTableView from "$lib/components/drizz/table-view/DrizzTableView.svelte";
   import type { PageData } from "./$types";
@@ -20,5 +21,12 @@
   };
 </script>
 
+<div>
+  <h1 class="text-xl font-semibold font-mono">Drizzle Dashboard</h1>
+  <p class="text-muted-foreground">
+    pagination, sorting, filters, debounced search
+  </p>
+</div>
+<SearchFilterView />
 <DrizzTableView users={data.users} />
 <PaginationView count={data.count} />
