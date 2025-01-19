@@ -37,7 +37,6 @@
 		"vite": "^5.4.11"
 	},
 	"dependencies": {
-		"@sveltejs/adapter-vercel": "^5.5.2",
 		"dotenv": "^16.4.7",
 		"drizzle-orm": "^0.38.4",
 		"drizzle-seed": "^0.3.0",
