@@ -7,7 +7,7 @@
   const isDesktop = new MediaQuery("(min-width: 768px)");
   let { count = 100 } = $props();
 
-  let siblingCount = $derived(isDesktop.current ? 1 : 0);
+  let siblingCount = $derived(isDesktop.current ? 1 : 1);
 
   let perPage = $derived.by(() => {
     let lim = Number(page.url.searchParams.get("limit")) || 10;
@@ -50,7 +50,6 @@
 
 <Pagination.Root {count} {perPage} {siblingCount} page={currPage} class="mt-4">
   {#snippet children({ pages, currentPage })}
-    <!-- {console.log(pages, currentPage, "updated", perPage, count)} -->
     <Pagination.Content>
       <Pagination.Item>
         <Pagination.PrevButton onclick={prevPage} />

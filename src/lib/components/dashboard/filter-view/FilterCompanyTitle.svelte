@@ -40,7 +40,7 @@
   };
 </script>
 
-<div class="space-x-2">
+<div class="flex items-center gap-2 flex-wrap">
   {#each all_filters as filter}
     <Button
       variant="outline"

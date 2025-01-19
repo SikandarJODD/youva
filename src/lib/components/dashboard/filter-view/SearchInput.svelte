@@ -47,7 +47,7 @@
   let debounceSearch = debounce(300, searchName);
 </script>
 
-<div class="w-48">
+<div class="w-full sm:w-48">
   <div class="relative">
     <Input
       bind:value={inputValue}
