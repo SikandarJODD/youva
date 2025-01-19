@@ -1,6 +1,6 @@
 # Svelte Pagination Example
 
-![Main_Page](/static/img.svg)
+![Main_Page](/static/image.png)
 
 <div align="center">
 <img src="https://img.shields.io/badge/Svelte-FF3E00.svg?style=for-the-badge&logo=Svelte&logoColor=white" />
