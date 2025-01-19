@@ -1,7 +1,7 @@
 <script>
   import Separator from "$lib/components/ui/separator/separator.svelte";
-  import SupabaseDark from "$lib/images/supabase-logo-wordmark--dark.svg";
-  import SupabaseLight from "$lib/images/supabase-logo-wordmark--light.svg";
+  import SupabaseDark from "$lib/images/supabase-logo-wordmarkdark.svg";
+  import SupabaseLight from "$lib/images/supabase-logo-wordmarklight.svg";
   import Svelte from "$lib/images/svelte.svg";
   import DrizzleORMDark from "$lib/images/logo-github-sq-dark.svg";
   import DrizzleORMLight from "$lib/images/logo-github-sq-light.svg";
