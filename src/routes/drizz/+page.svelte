@@ -22,7 +22,7 @@
 </script>
 
 <div>
-  <h1 class="text-xl font-semibold font-mono">Drizzle Dashboard</h1>
+  <h1 class="text-xl font-semibold ">Drizzle Dashboard</h1>
   <p class="text-muted-foreground">
     pagination, sorting, filters, debounced search, caching
   </p>

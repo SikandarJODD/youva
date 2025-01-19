@@ -3,6 +3,8 @@
   import ChevronLeft from "lucide-svelte/icons/chevron-left";
   import { cn } from "$lib/utils.js";
   import { buttonVariants } from "$lib/components/ui/button/index.js";
+  import { MediaQuery } from "svelte/reactivity";
+  let isDesktop = new MediaQuery("(min-width: 768px)");
 
   let {
     ref = $bindable(null),
@@ -14,14 +16,18 @@
 
 {#snippet Fallback()}
   <ChevronLeft />
-  <span>Previous</span>
+  <span class="hidden md:block">Previous</span>
 {/snippet}
 
 <PaginationPrimitive.PrevButton
   bind:ref
   {...restProps}
   class={cn(
-    buttonVariants({ variant: "ghost", className: "gap-1 pl-2.5" }),
+    buttonVariants({
+      variant: "ghost",
+      className: "gap-1 pl-2.5",
+      size: isDesktop ? "default" : "icon",
+    }),
     className
   )}
   children={children || Fallback}

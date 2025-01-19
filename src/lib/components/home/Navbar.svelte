@@ -2,7 +2,6 @@
   import { page } from "$app/state";
   import { slide } from "svelte/transition";
   import Button from "$lib/components/ui/button/button.svelte";
-  let url_param = $state(page.url.pathname.split("/")[1]);
   let navs = [
     { name: "Home", url: "/" },
     { name: "Drizz", url: "/drizz", isNew: true },
@@ -42,7 +41,7 @@
 							>Dashboard</a
 						> -->
             {#each navs as nav}
-              <Button href={nav.url} variant={nav.isNew ? "secondary" : "ghost"}
+              <Button href={nav.url} variant="ghost"
                 >{nav.name}
                 {#if nav.isNew}
                   <span
@@ -110,6 +109,7 @@
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         {#each navs as nav}
           <a
+            onclick={() => (isMobileMenu = false)}
             href={nav.url}
             class="block rounded-md px-3 py-2 text-base font-medium text-gray-300"
             >{nav.name}</a
@@ -187,6 +187,7 @@
         />
       </svg></Button
     >
+
     <!-- Twitter  -->
     <Button
       size="icon"
