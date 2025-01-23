@@ -14,7 +14,7 @@
 		"db:studio": "drizzle-kit studio"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-auto": "^4.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/node": "^22.10.7",
@@ -39,8 +39,7 @@
 	"dependencies": {
 		"dotenv": "^16.4.7",
 		"drizzle-orm": "^0.38.4",
-		"drizzle-seed": "^0.3.0",
-		"pg": "^8.13.1",
+		"postgres": "^3.4.5",
 		"throttle-debounce": "^5.0.2"
 	}
 }

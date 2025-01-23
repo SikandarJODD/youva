@@ -1,6 +1,6 @@
 # Svelte Pagination Example
 
-![Main_Page](/static/img.svg)
+![Main_Page](/static/img_icon.png)
 
 <div align="center">
 <img src="https://img.shields.io/badge/Svelte-FF3E00.svg?style=for-the-badge&logo=Svelte&logoColor=white" />
@@ -35,19 +35,32 @@
  git clone https://github.com/SikandarJODD/youva
 ```
 
+- Update your Database URL in `.env` file
+
+```bash
+  # Replace with your DB credentials! Supabase DB URL
+  DATABASE_URL="postgres://user:password@host:port/db-name"
+```
+
 - Install the dependencies
 
 ```bash
  pnpm install
 ```
 
-#### [Checkout Usage & Learning](/usage.md)
+- Migrate Schema to DB and add some dummy data
+
+```bash
+ npx drizzle-kit migrate
+```
 
 - Run the project
 
 ```bash
  pnpm dev
 ```
+
+#### [Checkout Usage & Learning](/usage.md)
 
 ### Components Used
 
