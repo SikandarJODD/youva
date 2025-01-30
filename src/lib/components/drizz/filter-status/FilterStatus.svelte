@@ -5,7 +5,7 @@
   import { buttonVariants } from "$lib/components/ui/button";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index";
 
-  let selected = $state("");
+  let selected = $state(page.url.searchParams.get("status") || "")!;
   let updatePageQuery = () => {
     let url = new URL(page.url);
     url.searchParams.delete("q");
